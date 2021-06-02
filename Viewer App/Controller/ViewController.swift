@@ -7,19 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var viewerItems = ViewerItems()
+//    var viewerItems = ViewerItems()
     var pdfList = [PdfItem]()
     var pdf = PdfItem()
     var img = ImageItem()
     var foundCharacters = ""
-        
+    
+    let dataManager = DataManager()
+    var returnedImgurImages = [PostData]()
+    
+    var dataList = [PdfPost]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
+        tableView.delegate = self
+        dataManager.delegate = self
         
         if let path = Bundle.main.url(forResource: "contents", withExtension: "xml"){
             if let parser = XMLParser(contentsOf: path) {
@@ -28,30 +36,53 @@ class ViewController: UIViewController {
             }
         }
     }
+
+    func didGetData(_ pdfPost: [PdfPost]) {
+        dataList += pdfPost
+        tableView.reloadData()
+    }
 }
 
 //MARK: - Tableview Datasource
 extension ViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return pdfs.count
-        return 1
+       
+        return dataList.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-//        let pdf = pdfs[indexPath.row]
-//        cell.textLabel?.text = pdf.filename
-//        cell.detailTextLabel?.text = pdf.description
-        
+
+        if indexPath.row + 1 == dataList.count + 1 {
+            cell.textLabel?.text = "Dummy"
+        } else {
+            let data = dataList[indexPath.row]
+            cell.textLabel?.text = data.title
+            cell.detailTextLabel?.text = data.description
+        }
         return cell
     }
     
+}
+
+//MARK: - Tableview Delegate
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        if indexPath.row + 1 == dataList.count + 1 {
+            let alert = UIAlertController(title: "Error", message: "File not found.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 //MARK: - XML Parser Delegate
@@ -67,24 +98,20 @@ extension ViewController: XMLParserDelegate {
             if let imageCount = attributeDict["image_count"] {
                 tempImage.image_count = imageCount
             }
-            self.img = tempImage
+            img = tempImage
         }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         if elementName == "filename" {
-            self.pdf.fileName = self.foundCharacters
+            pdf.fileName = self.foundCharacters
         } else if elementName == "description" {
-            self.pdf.description = self.foundCharacters
+            pdf.description = self.foundCharacters
         } else if elementName == "pdf-item" {
-            let tempPdf = PdfItem()
-            tempPdf.description = self.pdf.description
-            tempPdf.fileName = self.pdf.fileName
-            self.viewerItems.pdfItem.append(tempPdf)
+
+            dataList.append(PdfPost(title: pdf.fileName, description: pdf.description, detail: pdf.fileName))
             
-        } else if elementName == "viewer" {
-            self.viewerItems.imageItem = self.img
         }
         self.foundCharacters = ""
     }
@@ -97,12 +124,10 @@ extension ViewController: XMLParserDelegate {
     
     func parserDidEndDocument(_ parser: XMLParser) {
         
-        for item in viewerItems.pdfItem {
-            print(item.fileName)
-            print(item.description)
+        if(img.convertedRetrieveImages) {
+            dataManager.fetchImages(withCount: img.convertedImageCount)
         }
-        print(viewerItems.imageItem.convertedImageCount)
-        print(viewerItems.imageItem.convertedRetrieveImages)
     }
 
 }
+
