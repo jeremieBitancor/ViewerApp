@@ -24,7 +24,7 @@ class DataManager {
         
         let token = "57f39696dad5cc77cfbb51f2859f0675ede72f06"
 
-        if let url = URL(string: "https://api.imgur.com/3/gallery/hot/viral/1/day?showViral=true&mature=false&album_previews=false") {
+        if let url = URL(string: "https://api.imgur.com/3/gallery/search?q=dogs&q_type=png") {
             var request = URLRequest(url: url)
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             let session = URLSession(configuration: .default)
