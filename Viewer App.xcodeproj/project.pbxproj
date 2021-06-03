@@ -7,23 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820EF4DC2668B96F001DBBD9 /* RootSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820EF4DB2668B96F001DBBD9 /* RootSplitViewController.swift */; };
 		82626D1D2666EB7A00DB68C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D1C2666EB7A00DB68C1 /* AppDelegate.swift */; };
 		82626D1F2666EB7A00DB68C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D1E2666EB7A00DB68C1 /* SceneDelegate.swift */; };
-		82626D212666EB7A00DB68C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D202666EB7A00DB68C1 /* ViewController.swift */; };
+		82626D212666EB7A00DB68C1 /* MastertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D202666EB7A00DB68C1 /* MastertViewController.swift */; };
 		82626D242666EB7A00DB68C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82626D222666EB7A00DB68C1 /* Main.storyboard */; };
 		82626D262666EB7B00DB68C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82626D252666EB7B00DB68C1 /* Assets.xcassets */; };
 		82626D292666EB7B00DB68C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82626D272666EB7B00DB68C1 /* LaunchScreen.storyboard */; };
+		82626D332666EC8D00DB68C1 /* relativity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 82626D302666EC8D00DB68C1 /* relativity.pdf */; };
+		82626D342666EC8D00DB68C1 /* contents.xml in Resources */ = {isa = PBXBuildFile; fileRef = 82626D312666EC8D00DB68C1 /* contents.xml */; };
+		82626D352666EC8D00DB68C1 /* adventures-of-sherlock-holmes.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 82626D322666EC8D00DB68C1 /* adventures-of-sherlock-holmes.pdf */; };
+		82626D382666EE0700DB68C1 /* ViewerItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D372666EE0700DB68C1 /* ViewerItemsModel.swift */; };
+		82626D3B2667228200DB68C1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D3A2667228200DB68C1 /* DataManager.swift */; };
+		82626D3D26674A4E00DB68C1 /* ImgurImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82626D3C26674A4E00DB68C1 /* ImgurImageModel.swift */; };
+		827C24BA26676D3A00393194 /* PdfPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C24B926676D3A00393194 /* PdfPostModel.swift */; };
+		827C24BE2667C02900393194 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C24BD2667C02900393194 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820EF4DB2668B96F001DBBD9 /* RootSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
 		82626D192666EB7A00DB68C1 /* Viewer App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viewer App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82626D1C2666EB7A00DB68C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82626D1E2666EB7A00DB68C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82626D202666EB7A00DB68C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		82626D202666EB7A00DB68C1 /* MastertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastertViewController.swift; sourceTree = "<group>"; };
 		82626D232666EB7A00DB68C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82626D252666EB7B00DB68C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82626D282666EB7B00DB68C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82626D2A2666EB7B00DB68C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82626D302666EC8D00DB68C1 /* relativity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = relativity.pdf; sourceTree = "<group>"; };
+		82626D312666EC8D00DB68C1 /* contents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = contents.xml; sourceTree = "<group>"; };
+		82626D322666EC8D00DB68C1 /* adventures-of-sherlock-holmes.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "adventures-of-sherlock-holmes.pdf"; sourceTree = "<group>"; };
+		82626D372666EE0700DB68C1 /* ViewerItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerItemsModel.swift; sourceTree = "<group>"; };
+		82626D3A2667228200DB68C1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		82626D3C26674A4E00DB68C1 /* ImgurImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurImageModel.swift; sourceTree = "<group>"; };
+		827C24B926676D3A00393194 /* PdfPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfPostModel.swift; sourceTree = "<group>"; };
+		827C24BD2667C02900393194 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +74,48 @@
 		82626D1B2666EB7A00DB68C1 /* Viewer App */ = {
 			isa = PBXGroup;
 			children = (
+				82626D362666ED3E00DB68C1 /* Model */,
+				827C24BC26677ECE00393194 /* View */,
+				827C24BB26677EAA00393194 /* Controller */,
 				82626D1C2666EB7A00DB68C1 /* AppDelegate.swift */,
 				82626D1E2666EB7A00DB68C1 /* SceneDelegate.swift */,
-				82626D202666EB7A00DB68C1 /* ViewController.swift */,
-				82626D222666EB7A00DB68C1 /* Main.storyboard */,
 				82626D252666EB7B00DB68C1 /* Assets.xcassets */,
 				82626D272666EB7B00DB68C1 /* LaunchScreen.storyboard */,
 				82626D2A2666EB7B00DB68C1 /* Info.plist */,
+				82626D322666EC8D00DB68C1 /* adventures-of-sherlock-holmes.pdf */,
+				82626D312666EC8D00DB68C1 /* contents.xml */,
+				82626D302666EC8D00DB68C1 /* relativity.pdf */,
 			);
 			path = "Viewer App";
+			sourceTree = "<group>";
+		};
+		82626D362666ED3E00DB68C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82626D372666EE0700DB68C1 /* ViewerItemsModel.swift */,
+				82626D3A2667228200DB68C1 /* DataManager.swift */,
+				82626D3C26674A4E00DB68C1 /* ImgurImageModel.swift */,
+				827C24B926676D3A00393194 /* PdfPostModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		827C24BB26677EAA00393194 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				82626D202666EB7A00DB68C1 /* MastertViewController.swift */,
+				827C24BD2667C02900393194 /* DetailViewController.swift */,
+				820EF4DB2668B96F001DBBD9 /* RootSplitViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		827C24BC26677ECE00393194 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82626D222666EB7A00DB68C1 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +178,9 @@
 				82626D292666EB7B00DB68C1 /* LaunchScreen.storyboard in Resources */,
 				82626D262666EB7B00DB68C1 /* Assets.xcassets in Resources */,
 				82626D242666EB7A00DB68C1 /* Main.storyboard in Resources */,
+				82626D342666EC8D00DB68C1 /* contents.xml in Resources */,
+				82626D332666EC8D00DB68C1 /* relativity.pdf in Resources */,
+				82626D352666EC8D00DB68C1 /* adventures-of-sherlock-holmes.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82626D212666EB7A00DB68C1 /* ViewController.swift in Sources */,
+				82626D3B2667228200DB68C1 /* DataManager.swift in Sources */,
+				827C24BA26676D3A00393194 /* PdfPostModel.swift in Sources */,
+				82626D212666EB7A00DB68C1 /* MastertViewController.swift in Sources */,
 				82626D1D2666EB7A00DB68C1 /* AppDelegate.swift in Sources */,
+				820EF4DC2668B96F001DBBD9 /* RootSplitViewController.swift in Sources */,
+				82626D382666EE0700DB68C1 /* ViewerItemsModel.swift in Sources */,
+				82626D3D26674A4E00DB68C1 /* ImgurImageModel.swift in Sources */,
 				82626D1F2666EB7A00DB68C1 /* SceneDelegate.swift in Sources */,
+				827C24BE2667C02900393194 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
