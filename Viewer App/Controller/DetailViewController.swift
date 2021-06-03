@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     let imageView = UIImageView()
+    let pdfView = PDFView()
     let activityIndicator = UIActivityIndicatorView()
     
     var data: PdfPost? {
@@ -33,36 +34,39 @@ class DetailViewController: UIViewController {
         scrollView.addSubview(activityIndicator)
         
         activityIndicator.hidesWhenStopped = true
+//
 //        if let safeData = data {
-//            safeData.description
+//
+//            if safeData.detail.contains("pdf") {
+//
+//                let pdfView = PDFView(frame: self.view.bounds)
+//
+//                pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                self.view.addSubview(pdfView)
+//
+//                pdfView.autoScales = true
+//
+//                let fileURL = Bundle.main.url(forResource: "relativity", withExtension: "pdf")
+//                pdfView.document = PDFDocument(url: fileURL!)
+//
+//            } else {
+//
+//                imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+//                imageView.translatesAutoresizingMaskIntoConstraints = false
+//                imageView.contentMode = .scaleAspectFill
+//                view.addSubview(imageView)
+//
+//                NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+//                NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+//                NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200).isActive = true
+//                NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 300).isActive = true
+//
+//                activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+//
+//                NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+//                NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+//            }
 //        }
-        
-//        let pdfView = PDFView(frame: self.view.bounds)
-//
-//        pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(pdfView)
-//
-//        pdfView.autoScales = true
-//
-//        let fileURL = Bundle.main.url(forResource: "relativity", withExtension: "pdf")
-//        pdfView.document = PDFDocument(url: fileURL!)
-
-      
-        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        view.addSubview(imageView)
-
-        NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200).isActive = true
-        NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 300).isActive = true
-
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
-        
         
     }
     func refreshUI() {
@@ -70,19 +74,52 @@ class DetailViewController: UIViewController {
 //        label.text = data?.detail
         imageView.image = .none
         
+        
         if let safeData = data {
             
-            let imageUrlString = safeData.detail
-            print(imageUrlString)
-            guard let imageUrl = URL(string: imageUrlString) else {
-                return
-            }
-           
-            activityIndicator.startAnimating()
+            if safeData.detail.contains("pdf") {
+                imageView.removeFromSuperview()
+                let filename = safeData.detail.components(separatedBy: ".")[0]
+                
+                pdfView.frame = view.bounds
+                
+                pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                view.addSubview(pdfView)
+                
+                pdfView.autoScales = true
+                
+                let fileURL = Bundle.main.url(forResource: filename, withExtension: "pdf")
+                pdfView.document = PDFDocument(url: fileURL!)
+                
+            } else {
+                pdfView.removeFromSuperview()
+                imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                imageView.contentMode = .scaleAspectFill
+                view.addSubview(imageView)
 
-            imageView.loadImage(withUrl: imageUrl) {
-                self.activityIndicator.stopAnimating()
+                NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+                NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+                NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200).isActive = true
+                NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 300).isActive = true
+
+                activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+                
+                NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+                NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+                let imageUrlString = safeData.detail
+                guard let imageUrl = URL(string: imageUrlString) else {
+                    return
+                }
+               
+                activityIndicator.startAnimating()
+
+                imageView.loadImage(withUrl: imageUrl) {
+                    self.activityIndicator.stopAnimating()
+                }
             }
+            
+            
            
         }
     }
