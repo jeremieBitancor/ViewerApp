@@ -18,6 +18,7 @@ class RootSplitViewController: UISplitViewController {
 }
 
 //MARK: - UISplitViewController Delegate
+/// Delegate for showing master view controller when the app first starts
 extension RootSplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true

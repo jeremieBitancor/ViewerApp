@@ -24,6 +24,7 @@ class DataManager {
         
         let token = "57f39696dad5cc77cfbb51f2859f0675ede72f06"
 
+        /// Fetch data using URLSessions
         if let url = URL(string: "https://api.imgur.com/3/gallery/search?q=dogs&q_type=png") {
             var request = URLRequest(url: url)
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -33,23 +34,19 @@ class DataManager {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            // Decode api to Model
                             let results = try decoder.decode(PostDataList.self, from: safeData)
-//                            print(results.data[10])
-//                            var list = [PostData]()
+
                             var data: PostData
                             var dataList = [PdfPost]()
-                           
+                           /// Select number of images based on xml's settings
                             for x in 0...num - 1 {
-//                                list.append(results.data[x])
                                 data = results.data[x]
                                 let link = data.images?[0].link ?? data.link
                                 dataList.append(PdfPost(title: data.id, description: link, detail: link))
                             }
-//                            print(dataList)
                             
                             DispatchQueue.main.async {
-                                // Set data using delegation
+                                /// Set the data to be use
                                 self.delegate?.didGetData(dataList)
                             }
                         } catch {
